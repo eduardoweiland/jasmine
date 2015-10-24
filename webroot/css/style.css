@@ -1,0 +1,4 @@
+.navbar-brand > img {
+    display: inline-block;
+    margin-top: -4px;
+}
