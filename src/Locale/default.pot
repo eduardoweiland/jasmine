@@ -1,0 +1,141 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-10-24 20:06+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/DevicesController.php:52;77
+msgid "The device has been saved."
+msgstr ""
+
+#: Controller/DevicesController.php:55;80
+msgid "The device could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/DevicesController.php:99
+msgid "The device has been deleted."
+msgstr ""
+
+#: Controller/DevicesController.php:101
+msgid "The device could not be deleted. Please, try again."
+msgstr ""
+
+#: Template/Devices/add.ctp:3
+#: Template/Devices/edit.ctp:3
+#: Template/Devices/index.ctp:3;17
+#: Template/Devices/view.ctp:3
+#: Template/Pages/home.ctp:45
+msgid "Actions"
+msgstr ""
+
+#: Template/Devices/add.ctp:5
+#: Template/Devices/edit.ctp:11
+#: Template/Devices/view.ctp:7
+msgid "List Devices"
+msgstr ""
+
+#: Template/Devices/add.ctp:12
+msgid "Add Device"
+msgstr ""
+
+#: Template/Devices/add.ctp:14
+#: Template/Devices/edit.ctp:20
+#: Template/Devices/index.ctp:14
+#: Template/Devices/view.ctp:16
+msgid "IP Address"
+msgstr ""
+
+#: Template/Devices/add.ctp:15
+#: Template/Devices/edit.ctp:21
+msgid "Update Interval (in minutes)"
+msgstr ""
+
+#: Template/Devices/add.ctp:16
+#: Template/Devices/edit.ctp:22
+#: Template/Devices/view.ctp:20
+msgid "SNMP Community"
+msgstr ""
+
+#: Template/Devices/add.ctp:19
+#: Template/Devices/edit.ctp:25
+msgid "Submit"
+msgstr ""
+
+#: Template/Devices/edit.ctp:6
+#: Template/Devices/index.ctp:29
+msgid "Delete"
+msgstr ""
+
+#: Template/Devices/edit.ctp:8
+#: Template/Devices/index.ctp:29
+#: Template/Devices/view.ctp:6
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: Template/Devices/edit.ctp:18
+#: Template/Devices/view.ctp:5
+msgid "Edit Device"
+msgstr ""
+
+#: Template/Devices/index.ctp:5
+#: Template/Devices/view.ctp:8
+msgid "New Device"
+msgstr ""
+
+#: Template/Devices/index.ctp:10
+#: Template/Element/navbar.ctp:16
+msgid "Devices"
+msgstr ""
+
+#: Template/Devices/index.ctp:15
+#: Template/Devices/view.ctp:24
+msgid "Update Interval"
+msgstr ""
+
+#: Template/Devices/index.ctp:16
+#: Template/Devices/view.ctp:28
+msgid "Last Updated"
+msgstr ""
+
+#: Template/Devices/index.ctp:27
+msgid "View"
+msgstr ""
+
+#: Template/Devices/index.ctp:28
+msgid "Edit"
+msgstr ""
+
+#: Template/Devices/index.ctp:37
+msgid "previous"
+msgstr ""
+
+#: Template/Devices/index.ctp:39
+msgid "next"
+msgstr ""
+
+#: Template/Devices/view.ctp:6
+msgid "Delete Device"
+msgstr ""
+
+#: Template/Devices/view.ctp:25
+msgid "minutes"
+msgstr ""
+
+#: Template/Element/navbar.ctp:22
+msgid "Monitoring"
+msgstr ""
+
+#: Template/Element/navbar.ctp:34
+msgid "Settings"
+msgstr ""
+
