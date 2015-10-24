@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b0d60e640664b8f1a496ccc95dfee859",
-    "content-hash": "5a6e0241c2ad93c131269a9e6f051a64",
+    "hash": "7cb0750de55ee89839c46acadda303d7",
+    "content-hash": "92ec099bd1d44d461faa4bc8864be86d",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -285,6 +285,43 @@
             ],
             "description": "A composer installer for CakePHP 3.0+ plugins.",
             "time": "2015-06-10 10:35:13"
+        },
+        {
+            "name": "holt59/cakephp3-bootstrap-helpers",
+            "version": "v3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Holt59/cakephp3-bootstrap-helpers.git",
+                "reference": "a1bae2506c7feee9c9c5d5081b20898c99502399"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Holt59/cakephp3-bootstrap-helpers/zipball/a1bae2506c7feee9c9c5d5081b20898c99502399",
+                "reference": "a1bae2506c7feee9c9c5d5081b20898c99502399",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "~3.0"
+            },
+            "type": "cakephp-plugin",
+            "extra": {
+                "installer-name": "Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bootstrap\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache"
+            ],
+            "description": "Bootstrap Helpers for CakePHP 3.0",
+            "keywords": [
+                "bootstrap",
+                "cakephp"
+            ],
+            "time": "2015-09-09 20:02:16"
         },
         {
             "name": "ircmaxell/password-compat",
