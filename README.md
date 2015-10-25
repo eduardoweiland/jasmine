@@ -8,6 +8,13 @@ Trabalho de Gerência e Administração de Redes UNISC 2015/2
 
 Feito em PHP com o framework CakePHP. Interface feita utilizando Bootstrap.
 
+## Interface
+
+![Lista de dispositivos](design/Dispositivos_Lista.png)
+![Cadastro de novo dispositivo](design/Dispositivos_Novo.png)
+![Detalhes de um dispositivo](design/Dispositivos_Detalhes.png)
+![Tela de monitoramento](design/Monitoramento.png)
+
 ## Instalação
 
 Instalar as dependências pelo Composer:
