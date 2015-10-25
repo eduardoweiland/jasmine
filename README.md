@@ -6,7 +6,9 @@ Trabalho de Gerência e Administração de Redes UNISC 2015/2
 
 ## Implementação
 
-Feito em PHP com o framework CakePHP. Interface feita utilizando Bootstrap.
+JASMINE é desenvolvido na linguagem PHP utilizando o framework [CakePHP][]. A biblioteca utilizada para comunicação com os agentes é a [extensão SNMP padrão do PHP][PHP-SNMP], utilizando a API orientada a objetos disponível a partir da versão 5.4 do PHP.
+
+A interface web é feita utilizando [Bootstrap][]. Os ícones utilizados são do [Font Awesome][].
 
 ## Interface
 
@@ -43,3 +45,9 @@ Copiar o arquivo `config/app.default.php` para `config/app.php` e configurar a c
 Criar as tabelas no banco de dados, utilizando o `cake migrations`:
 
     $ cake migrations migrate
+
+
+[CakePHP]: http://cakephp.org "The rapid development PHP framework"
+[PHP-SNMP]: http://php.net/manual/en/book.snmp.php "PHP SNMP Documentation"
+[Bootstrap]: http://getbootstrap.com "Bootstrap Front-End Framework"
+[Font Awesome]: http://fontawesome.io "Font Awesome The iconic font and CSS toolkit"
