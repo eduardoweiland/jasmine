@@ -1,17 +1,5 @@
 <?php
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link      http://cakephp.org CakePHP(tm) Project
- * @since     3.0.0
- * @license   http://www.opensource.org/licenses/mit-license.php MIT License
- */
+
 namespace App\Console;
 
 use Composer\Script\Event;
@@ -19,10 +7,9 @@ use Exception;
 
 /**
  * Provides installation hooks for when this application is installed via
- * composer. Customize this class to suit your needs.
+ * composer.
  */
-class Installer
-{
+class Installer {
 
     /**
      * Does some routine installation tasks so people don't have to.
@@ -31,8 +18,7 @@ class Installer
      * @throws \Exception Exception raised by validator.
      * @return void
      */
-    public static function postInstall(Event $event)
-    {
+    public static function postInstall(Event $event) {
         $io = $event->getIO();
 
         $rootDir = dirname(dirname(__DIR__));
@@ -40,33 +26,52 @@ class Installer
         static::createAppConfig($rootDir, $io);
         static::createWritableDirectories($rootDir, $io);
 
-        // ask if the permissions should be changed
-        if ($io->isInteractive()) {
-            $validator = function ($arg) {
-                if (in_array($arg, ['Y', 'y', 'N', 'n'])) {
-                    return $arg;
-                }
-                throw new Exception('This is not a valid answer. Please choose Y or n.');
-            };
-            $setFolderPermissions = $io->askAndValidate(
-                '<info>Set Folder Permissions ? (Default to Y)</info> [<comment>Y,n</comment>]? ',
-                $validator,
-                10,
-                'Y'
-            );
-
-            if (in_array($setFolderPermissions, ['Y', 'y'])) {
-                static::setFolderPermissions($rootDir, $io);
-            }
-        } else {
+        if (static::confirmAction($io, 'Set Folder Permissions?')) {
             static::setFolderPermissions($rootDir, $io);
         }
 
         static::setSecuritySalt($rootDir, $io);
 
+        // TODO: create database (ask connection parameters)
+
         if (class_exists('\Cake\Codeception\Console\Installer')) {
             \Cake\Codeception\Console\Installer::customizeCodeceptionBinary($event);
         }
+    }
+
+    /**
+     * Asks the user for confirmation on some action to be taken.
+     *
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @param string $question
+     * @param boolean $default Default answer
+     * @return boolean
+     */
+    protected static function confirmAction($io, $question, $default = true) {
+        if (!$io->isInteractive()) {
+            return $default;
+        }
+
+        $validator = function ($arg) {
+            if (in_array($arg, ['Y', 'y', 'N', 'n'])) {
+                return $arg;
+            }
+            throw new Exception('This is not a valid answer. Please choose Y or n.');
+        };
+
+        $defaultAnswer = $default ? 'Y' : 'n';
+
+        $msg = '<question>' . $question . '</question> '
+                . '<info>(Default to ' . $defaultAnswer . ')</info> '
+                . '[<comment>Y,n</comment>]: ';
+
+        $answer = $io->askAndValidate($msg, $validator, 10, $defaultAnswer);
+
+        if (in_array($answer, ['Y', 'y'])) {
+            return true;
+        }
+
+        return $default;
     }
 
     /**
@@ -76,8 +81,7 @@ class Installer
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @return void
      */
-    public static function createAppConfig($dir, $io)
-    {
+    private static function createAppConfig($dir, $io) {
         $appConfig = $dir . '/config/app.php';
         $defaultConfig = $dir . '/config/app.default.php';
         if (!file_exists($appConfig)) {
@@ -93,8 +97,7 @@ class Installer
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @return void
      */
-    public static function createWritableDirectories($dir, $io)
-    {
+    private static function createWritableDirectories($dir, $io) {
         $paths = [
             'logs',
             'tmp',
@@ -124,8 +127,7 @@ class Installer
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @return void
      */
-    public static function setFolderPermissions($dir, $io)
-    {
+    private static function setFolderPermissions($dir, $io) {
         // Change the permissions on a path and output the results.
         $changePerms = function ($path, $perms, $io) {
             // Get current permissions in decimal format so we can bitmask it.
@@ -137,7 +139,8 @@ class Installer
             $res = chmod($path, $currentPerms | $perms);
             if ($res) {
                 $io->write('Permissions set on ' . $path);
-            } else {
+            }
+            else {
                 $io->write('Failed to set permissions on ' . $path);
             }
         };
@@ -169,24 +172,24 @@ class Installer
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @return void
      */
-    public static function setSecuritySalt($dir, $io)
-    {
+    private static function setSecuritySalt($dir, $io) {
         $config = $dir . '/config/app.php';
-        $content = file_get_contents($config);
+        $originalContent = file_get_contents($config);
 
         $newKey = hash('sha256', $dir . php_uname() . microtime(true));
-        $content = str_replace('__SALT__', $newKey, $content, $count);
+        $newContent = str_replace('__SALT__', $newKey, $originalContent, $count);
 
         if ($count == 0) {
             $io->write('No Security.salt placeholder to replace.');
             return;
         }
 
-        $result = file_put_contents($config, $content);
+        $result = file_put_contents($config, $newContent);
         if ($result) {
             $io->write('Updated Security.salt value in config/app.php');
             return;
         }
         $io->write('Unable to update Security.salt value.');
     }
+
 }
