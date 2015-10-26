@@ -1,11 +1,12 @@
 {
-    "name": "cakephp/app",
-    "description": "CakePHP skeleton app",
-    "homepage": "http://cakephp.org",
+    "name": "eduardoweiland/jasmine",
+    "description": "Just Another SNMP Manager for Imaginary Networks",
+    "homepage": "https://github.com/eduardoweiland/jasmine",
     "type": "project",
     "license": "MIT",
     "require": {
         "php": ">=5.4.16",
+        "ext-snmp": "*",
         "cakephp/cakephp": "~3.1",
         "mobiledetect/mobiledetectlib": "2.*",
         "cakephp/migrations": "~1.0",
@@ -18,8 +19,7 @@
         "cakephp/bake": "~1.1"
     },
     "suggest": {
-        "phpunit/phpunit": "Allows automated tests to be run without system-wide install.",
-        "cakephp/cakephp-codesniffer": "Allows to check the code against the coding standards used in CakePHP."
+        "phpunit/phpunit": "Allows automated tests to be run without system-wide install."
     },
     "autoload": {
         "psr-4": {
