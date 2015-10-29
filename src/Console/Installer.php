@@ -9,7 +9,8 @@ use Exception;
  * Provides installation hooks for when this application is installed via
  * composer.
  */
-class Installer {
+class Installer
+{
 
     /**
      * Does some routine installation tasks so people don't have to.
@@ -18,7 +19,8 @@ class Installer {
      * @throws \Exception Exception raised by validator.
      * @return void
      */
-    public static function postInstall(Event $event) {
+    public static function postInstall(Event $event)
+    {
         $io = $event->getIO();
 
         $rootDir = dirname(dirname(__DIR__));
@@ -47,7 +49,8 @@ class Installer {
      * @param boolean $default Default answer
      * @return boolean
      */
-    protected static function confirmAction($io, $question, $default = true) {
+    protected static function confirmAction($io, $question, $default = true)
+    {
         if (!$io->isInteractive()) {
             return $default;
         }
@@ -81,7 +84,8 @@ class Installer {
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @return void
      */
-    private static function createAppConfig($dir, $io) {
+    private static function createAppConfig($dir, $io)
+    {
         $appConfig = $dir . '/config/app.php';
         $defaultConfig = $dir . '/config/app.default.php';
         if (!file_exists($appConfig)) {
@@ -97,7 +101,8 @@ class Installer {
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @return void
      */
-    private static function createWritableDirectories($dir, $io) {
+    private static function createWritableDirectories($dir, $io)
+    {
         $paths = [
             'logs',
             'tmp',
@@ -127,7 +132,8 @@ class Installer {
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @return void
      */
-    private static function setFolderPermissions($dir, $io) {
+    private static function setFolderPermissions($dir, $io)
+    {
         // Change the permissions on a path and output the results.
         $changePerms = function ($path, $perms, $io) {
             // Get current permissions in decimal format so we can bitmask it.
@@ -139,8 +145,7 @@ class Installer {
             $res = chmod($path, $currentPerms | $perms);
             if ($res) {
                 $io->write('Permissions set on ' . $path);
-            }
-            else {
+            } else {
                 $io->write('Failed to set permissions on ' . $path);
             }
         };
@@ -172,7 +177,8 @@ class Installer {
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @return void
      */
-    private static function setSecuritySalt($dir, $io) {
+    private static function setSecuritySalt($dir, $io)
+    {
         $config = $dir . '/config/app.php';
         $originalContent = file_get_contents($config);
 
@@ -191,5 +197,4 @@ class Installer {
         }
         $io->write('Unable to update Security.salt value.');
     }
-
 }

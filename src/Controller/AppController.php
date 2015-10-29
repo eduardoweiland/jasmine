@@ -26,8 +26,8 @@ use Cake\Event\Event;
  *
  * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller {
-
+class AppController extends Controller
+{
     public $helpers = [
         'Url',
         'Html' => [
@@ -54,7 +54,8 @@ class AppController extends Controller {
      *
      * @return void
      */
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
 
         $this->loadComponent('RequestHandler');
@@ -67,11 +68,11 @@ class AppController extends Controller {
      * @param \Cake\Event\Event $event The beforeRender event.
      * @return void
      */
-    public function beforeRender(Event $event) {
+    public function beforeRender(Event $event)
+    {
         if (!array_key_exists('_serialize', $this->viewVars) &&
                 in_array($this->response->type(), ['application/json', 'application/xml'])) {
             $this->set('_serialize', true);
         }
     }
-
 }
