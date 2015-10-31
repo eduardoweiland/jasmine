@@ -10,12 +10,28 @@
     <?= $this->Form->create($device) ?>
     <fieldset>
         <legend><?= __('Add Device') ?></legend>
-        <?php
-            echo $this->Form->input('ip_address', ['label' => __('IP Address')]);
-            echo $this->Form->input('update_interval', ['label' => __('Update Interval (in minutes)'), 'min' => 5]);
-            echo $this->Form->input('snmp_community', ['label' => __('SNMP Community')]);
-        ?>
+        <div class="row">
+            <div class="col-sm-6">
+                <?= $this->Form->input('name', ['label' => __('Name')]) ?>
+            </div>
+            <div class="col-sm-6">
+                <?= $this->Form->input('ip_address', ['label' => __('IP Address')]) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <?= $this->Form->input('update_interval', ['label' => __('Update Interval (in minutes)')]) ?>
+            </div>
+            <div class="col-sm-6">
+                <?= $this->Form->input('snmp_community', ['label' => __('SNMP Community')]) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <?= $this->Form->input('description', ['label' => __('Description')]) ?>
+            </div>
+        </div>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Submit'), ['class' => 'pull-right btn btn-primary btn-lg']) ?>
     <?= $this->Form->end() ?>
 </main>

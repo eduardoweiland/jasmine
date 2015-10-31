@@ -43,6 +43,10 @@ class DevicesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
+
+        $validator
             ->add('update_interval', 'valid', ['rule' => 'numeric'])
             ->requirePresence('update_interval', 'create')
             ->notEmpty('update_interval');
@@ -57,6 +61,9 @@ class DevicesTable extends Table
 
         $validator
             ->allowEmpty('snmp_community');
+
+        $validator
+            ->allowEmpty('description');
 
         return $validator;
     }

@@ -9,7 +9,6 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class DevicesFixture extends TestFixture
 {
-
     /**
      * Fields
      *
@@ -40,10 +39,12 @@ class DevicesFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'update_interval' => 1,
-            'last_updated' => '2015-10-24 15:04:15',
-            'ip_address' => 'Lorem ipsum dolor sit amet',
-            'snmp_community' => 'Lorem ipsum dolor sit amet'
-        ],
+            'name' => 'Local Machine',
+            'update_interval' => 5,
+            'last_updated' => null,
+            'ip_address' => '127.0.0.1',
+            'snmp_community' => 'public',
+            'description' => 'The Local Machine'
+        ]
     ];
 }

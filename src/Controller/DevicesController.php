@@ -34,6 +34,8 @@ class DevicesController extends AppController
         $device = $this->Devices->get($id, [
             'contain' => []
         ]);
+
+        $device->softwares = [ /* TODO */ ];
         $this->set('device', $device);
         $this->set('_serialize', ['device']);
     }
