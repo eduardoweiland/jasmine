@@ -20,7 +20,7 @@ echo $this->Navbar->create(
 
         echo $this->Navbar->link(
                 $this->Html->icon('area-chart') . '&nbsp;' . __('Monitoring'),
-                ['controller' => 'Monitor', 'action' => 'index'],
+                ['controller' => 'Devices', 'action' => 'monitoring'],
                 [],
                 ['escape' => false]);
 

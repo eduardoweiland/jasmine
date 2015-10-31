@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASMINE\n"
-"POT-Creation-Date: 2015-10-31 18:23-0200\n"
-"PO-Revision-Date: 2015-10-31 18:24-0200\n"
+"POT-Creation-Date: 2015-10-31 20:19-0200\n"
+"PO-Revision-Date: 2015-10-31 20:19-0200\n"
 "Last-Translator: Eduardo Weiland <eduardo@eduardoweiland.info>\n"
 "Language-Team: pt_BR\n"
 "Language: pt_BR\n"
@@ -116,6 +116,14 @@ msgstr "anterior"
 #: Template/Devices/index.ctp:41
 msgid "next"
 msgstr "próximo"
+
+#: Template/Devices/monitoring.ctp:8
+msgid "Refresh interval: "
+msgstr "Intervalo de atualização: "
+
+#: Template/Devices/monitoring.ctp:11
+msgid "Refresh now"
+msgstr "Atualizar agora"
 
 #: Template/Devices/view.ctp:6
 msgid "Delete Device"

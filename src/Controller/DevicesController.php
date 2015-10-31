@@ -104,4 +104,16 @@ class DevicesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * Monitoring screen.
+     *
+     * @return void
+     */
+    public function monitoring()
+    {
+        $this->request->allowMethod(['get']);
+        $list = $this->Devices->find()->select(['id', 'name'])->combine('id', 'name');
+        $this->set('devices', $list);
+    }
 }

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-31 20:23+0000\n"
+"POT-Creation-Date: 2015-10-31 22:19+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -129,6 +129,14 @@ msgstr ""
 
 #: Template/Devices/index.ctp:41
 msgid "next"
+msgstr ""
+
+#: Template/Devices/monitoring.ctp:8
+msgid "Refresh interval: "
+msgstr ""
+
+#: Template/Devices/monitoring.ctp:11
+msgid "Refresh now"
 msgstr ""
 
 #: Template/Devices/view.ctp:6
