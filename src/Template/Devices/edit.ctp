@@ -2,13 +2,8 @@
     <div class="panel panel-primary">
         <div class="panel-heading"><h4><?= __('Actions') ?></h4></div>
         <nav class="list-group">
-            <?= $this->Form->postLink(
-                    __('Delete'),
-                    ['action' => 'delete', $device->id],
-                    ['confirm' => __('Are you sure you want to delete {0}?', $device->name), 'class' => 'list-group-item']
-                )
-            ?>
-            <?= $this->Html->link(__('List Devices'), ['action' => 'index'], ['class' => 'list-group-item']) ?>
+            <?= $this->Sidebar->postAction(__('Delete Device'), ['action' => 'delete', $device->id], 'times', ['confirm' => __('Are you sure you want to delete {0}?', $device->name)]) ?>
+            <?= $this->Sidebar->action(__('List Devices'), ['action' => 'index'], 'list') ?>
         </nav>
     </div>
 </aside>

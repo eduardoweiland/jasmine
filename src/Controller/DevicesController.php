@@ -7,9 +7,13 @@ use App\Controller\AppController;
  * Devices Controller
  *
  * @property \App\Model\Table\DevicesTable $Devices
+ * @property \App\View\Helper\Sidebar $Sidebar
  */
 class DevicesController extends AppController
 {
+    public $helpers = [
+        'Sidebar'
+    ];
 
     /**
      * Index method

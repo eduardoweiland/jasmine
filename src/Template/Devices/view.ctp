@@ -2,10 +2,10 @@
     <div class="panel panel-primary">
         <div class="panel-heading"><h4><?= __('Actions') ?></h4></div>
         <nav class="list-group">
-            <?= $this->Html->link(__('Edit Device'), ['action' => 'edit', $device->id], ['class' => 'list-group-item']) ?>
-            <?= $this->Form->postLink(__('Delete Device'), ['action' => 'delete', $device->id], ['confirm' => __('Are you sure you want to delete {0}?', $device->name), 'class' => 'list-group-item']) ?>
-            <?= $this->Html->link(__('List Devices'), ['action' => 'index'], ['class' => 'list-group-item']) ?>
-            <?= $this->Html->link(__('New Device'), ['action' => 'add'], ['class' => 'list-group-item']) ?>
+            <?= $this->Sidebar->action(__('Edit Device'), ['action' => 'edit', $device->id], 'pencil') ?>
+            <?= $this->Sidebar->postAction(__('Delete Device'), ['action' => 'delete', $device->id], 'times', ['confirm' => __('Are you sure you want to delete {0}?', $device->name)]) ?>
+            <?= $this->Sidebar->action(__('List Devices'), ['action' => 'index'], 'list') ?>
+            <?= $this->Sidebar->action(__('New Device'), ['action' => 'add'], 'plus') ?>
         </nav>
     </div>
 </aside>

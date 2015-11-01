@@ -2,7 +2,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading"><h4><?= __('Actions') ?></h4></div>
         <nav class="list-group">
-            <?= $this->Html->link(__('List Devices'), ['action' => 'index'], ['class' => 'list-group-item']) ?>
+            <?= $this->Sidebar->action(__('List Devices'), ['action' => 'index'], 'list') ?>
         </nav>
     </div>
 </aside>
