@@ -38,7 +38,7 @@ class DevicesTable extends Table
     public function findUpdatePending()
     {
         $query = $this->find();
-        $condition = $query->newExpr('DATE_ADD(last_updated, INTERVAL update_interval MINUTE) <= NOW()');
+        $condition = $query->newExpr('last_updated IS NULL OR DATE_ADD(last_updated, INTERVAL update_interval MINUTE) <= NOW()');
         $query->where($condition);
         return $query->select();
     }
