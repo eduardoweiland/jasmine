@@ -1,5 +1,8 @@
 <?php $this->Html->css('bootstrap-multiselect.css', ['block' => true]); ?>
 <?php $this->Html->script('bootstrap-multiselect.js', ['block' => true]); ?>
+<?php $this->Html->script('jquery.flot.min.js', ['block' => true]); ?>
+<?php $this->Html->script('jquery.flot.resize.min.js', ['block' => true]); ?>
+<?php $this->Html->script('jquery.flot.time.min.js', ['block' => true]); ?>
 <?php $this->Html->script('monitoring.js', ['block' => true]); ?>
 <main class="col-md-12">
     <div class="panel panel-default">
