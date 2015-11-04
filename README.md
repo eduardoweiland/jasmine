@@ -54,7 +54,7 @@ Copiar o arquivo `config/app.default.php` para `config/app.php` e configurar a c
 
 Criar as tabelas no banco de dados, utilizando o `cake migrations`:
 
-    $ cake migrations migrate
+    $ bin/cake migrations migrate
 
 
 [CakePHP]: http://cakephp.org "The rapid development PHP framework"
