@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASMINE\n"
-"POT-Creation-Date: 2015-10-24 18:07-0200\n"
-"PO-Revision-Date: 2015-10-24 18:07-0200\n"
+"POT-Creation-Date: 2015-10-31 20:19-0200\n"
+"PO-Revision-Date: 2015-10-31 20:19-0200\n"
 "Last-Translator: Eduardo Weiland <eduardo@eduardoweiland.info>\n"
 "Language-Team: pt_BR\n"
 "Language: pt_BR\n"
@@ -15,25 +15,24 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.5\n"
 
-#: Controller/DevicesController.php:52;77
+#: Controller/DevicesController.php:54;79
 msgid "The device has been saved."
 msgstr "O dispositivo foi salvo."
 
-#: Controller/DevicesController.php:55;80
+#: Controller/DevicesController.php:57;82
 msgid "The device could not be saved. Please, try again."
 msgstr "O dispositivo não pôde ser salvo. Por favor, tente novamente."
 
-#: Controller/DevicesController.php:99
+#: Controller/DevicesController.php:101
 msgid "The device has been deleted."
 msgstr "O dispositivo foi excluído."
 
-#: Controller/DevicesController.php:101
+#: Controller/DevicesController.php:103
 msgid "The device could not be deleted. Please, try again."
 msgstr "O dispositivo não pôde ser excluído, Por favor, tente novamente."
 
 #: Template/Devices/add.ctp:3 Template/Devices/edit.ctp:3
-#: Template/Devices/index.ctp:3;17 Template/Devices/view.ctp:3
-#: Template/Pages/home.ctp:45
+#: Template/Devices/index.ctp:3;18 Template/Devices/view.ctp:3
 msgid "Actions"
 msgstr "Ações"
 
@@ -46,32 +45,41 @@ msgstr "Listar Dispositivos"
 msgid "Add Device"
 msgstr "Adicionar Dispositivo"
 
-#: Template/Devices/add.ctp:14 Template/Devices/edit.ctp:20
-#: Template/Devices/index.ctp:14 Template/Devices/view.ctp:16
+#: Template/Devices/add.ctp:15 Template/Devices/edit.ctp:21
+#: Template/Devices/index.ctp:14 Template/Devices/view.ctp:22
+msgid "Name"
+msgstr "Nome"
+
+#: Template/Devices/add.ctp:18 Template/Devices/edit.ctp:24
+#: Template/Devices/index.ctp:15
 msgid "IP Address"
 msgstr "Endereço IP"
 
-#: Template/Devices/add.ctp:15 Template/Devices/edit.ctp:21
+#: Template/Devices/add.ctp:23 Template/Devices/edit.ctp:29
 msgid "Update Interval (in minutes)"
 msgstr "Intervalo de Atualização (em minutos)"
 
-#: Template/Devices/add.ctp:16 Template/Devices/edit.ctp:22
-#: Template/Devices/view.ctp:20
+#: Template/Devices/add.ctp:26 Template/Devices/edit.ctp:32
 msgid "SNMP Community"
 msgstr "Comunidade SNMP"
 
-#: Template/Devices/add.ctp:19 Template/Devices/edit.ctp:25
+#: Template/Devices/add.ctp:31 Template/Devices/edit.ctp:37
+#: Template/Devices/index.ctp:17
+msgid "Description"
+msgstr "Descrição"
+
+#: Template/Devices/add.ctp:35 Template/Devices/edit.ctp:41
 msgid "Submit"
 msgstr "Enviar"
 
-#: Template/Devices/edit.ctp:6 Template/Devices/index.ctp:29
+#: Template/Devices/edit.ctp:6 Template/Devices/index.ctp:31
 msgid "Delete"
 msgstr "Excluir"
 
-#: Template/Devices/edit.ctp:8 Template/Devices/index.ctp:29
+#: Template/Devices/edit.ctp:8 Template/Devices/index.ctp:31
 #: Template/Devices/view.ctp:6
-msgid "Are you sure you want to delete # {0}?"
-msgstr "Você tem certeza de que deseja excluir # {0}?"
+msgid "Are you sure you want to delete {0}?"
+msgstr "Você tem certeza de que deseja excluir {0}?"
 
 #: Template/Devices/edit.ctp:18 Template/Devices/view.ctp:5
 msgid "Edit Device"
@@ -85,37 +93,73 @@ msgstr "Novo Dispositivo"
 msgid "Devices"
 msgstr "Dispositivos"
 
-#: Template/Devices/index.ctp:15 Template/Devices/view.ctp:24
+#: Template/Devices/index.ctp:16
 msgid "Update Interval"
 msgstr "Intervalo de Atualização"
 
-#: Template/Devices/index.ctp:16 Template/Devices/view.ctp:28
-msgid "Last Updated"
-msgstr "Última Atualização"
+#: Template/Devices/index.ctp:26
+msgid "{0} minutes"
+msgstr "{0} minutos"
 
-#: Template/Devices/index.ctp:27
+#: Template/Devices/index.ctp:29
 msgid "View"
 msgstr "Ver"
 
-#: Template/Devices/index.ctp:28
+#: Template/Devices/index.ctp:30
 msgid "Edit"
 msgstr "Editar"
 
-#: Template/Devices/index.ctp:37
+#: Template/Devices/index.ctp:39
 msgid "previous"
 msgstr "anterior"
 
-#: Template/Devices/index.ctp:39
+#: Template/Devices/index.ctp:41
 msgid "next"
 msgstr "próximo"
+
+#: Template/Devices/monitoring.ctp:8
+msgid "Refresh interval: "
+msgstr "Intervalo de atualização: "
+
+#: Template/Devices/monitoring.ctp:11
+msgid "Refresh now"
+msgstr "Atualizar agora"
 
 #: Template/Devices/view.ctp:6
 msgid "Delete Device"
 msgstr "Excluir Dispositivo"
 
-#: Template/Devices/view.ctp:25
-msgid "minutes"
-msgstr "minutos"
+#: Template/Devices/view.ctp:13
+msgid "Device Details"
+msgstr "Detalhes do Dispositivo"
+
+#: Template/Devices/view.ctp:15
+msgid "No description"
+msgstr "Sem descrição"
+
+#: Template/Devices/view.ctp:16
+msgid "Last Updated"
+msgstr "Última Atualização"
+
+#: Template/Devices/view.ctp:16
+msgid "Never"
+msgstr "Nunca"
+
+#: Template/Devices/view.ctp:18
+msgid "Installed Software"
+msgstr "Software Instalado"
+
+#: Template/Devices/view.ctp:23
+msgid "Install Date"
+msgstr "Data de Instalação"
+
+#: Template/Devices/view.ctp:24
+msgid "Type"
+msgstr "Tipo"
+
+#: Template/Devices/view.ctp:30
+msgid "No data available"
+msgstr "Sem dados disponíveis"
 
 #: Template/Element/navbar.ctp:22
 msgid "Monitoring"
@@ -124,6 +168,9 @@ msgstr "Monitoramento"
 #: Template/Element/navbar.ctp:34
 msgid "Settings"
 msgstr "Configurações"
+
+#~ msgid "Are you sure you want to delete # {0}?"
+#~ msgstr "Você tem certeza de que deseja excluir # {0}?"
 
 #~ msgid "Id"
 #~ msgstr "ID"

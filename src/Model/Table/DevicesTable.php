@@ -52,24 +52,36 @@ class DevicesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->add('update_interval', 'valid', ['rule' => 'numeric'])
-                ->requirePresence('update_interval', 'create')
-                ->notEmpty('update_interval');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         $validator
-                ->add('last_updated', 'valid', ['rule' => 'datetime'])
-                ->allowEmpty('last_updated');
+            ->add('update_interval', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('update_interval', 'create')
+            ->notEmpty('update_interval');
 
         $validator
-                ->requirePresence('ip_address', 'create')
-                ->notEmpty('ip_address');
+            ->add('update_interval', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('update_interval', 'create')
+            ->notEmpty('update_interval');
 
         $validator
-                ->allowEmpty('snmp_community');
+            ->add('last_updated', 'valid', ['rule' => 'datetime'])
+            ->allowEmpty('last_updated');
+
+        $validator
+            ->requirePresence('ip_address', 'create')
+            ->notEmpty('ip_address');
+
+        $validator
+            ->allowEmpty('snmp_community');
+
+        $validator
+            ->allowEmpty('description');
 
         return $validator;
     }

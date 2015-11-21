@@ -9,7 +9,6 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class DevicesFixture extends TestFixture
 {
-
     /**
      * Fields
      *
@@ -18,10 +17,12 @@ class DevicesFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'name' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'update_interval' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'last_updated' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'ip_address' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'snmp_community' => ['type' => 'string', 'length' => 120, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'description' => ['type' => 'string', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -40,10 +41,12 @@ class DevicesFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'update_interval' => 1,
-            'last_updated' => '2015-10-24 15:04:15',
-            'ip_address' => 'Lorem ipsum dolor sit amet',
-            'snmp_community' => 'Lorem ipsum dolor sit amet'
-        ],
+            'name' => 'Local Machine',
+            'update_interval' => 5,
+            'last_updated' => null,
+            'ip_address' => '127.0.0.1',
+            'snmp_community' => 'public',
+            'description' => 'The Local Machine'
+        ]
     ];
 }

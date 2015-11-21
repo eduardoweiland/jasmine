@@ -7,9 +7,13 @@ use App\Controller\AppController;
  * Devices Controller
  *
  * @property \App\Model\Table\DevicesTable $Devices
+ * @property \App\View\Helper\Sidebar $Sidebar
  */
 class DevicesController extends AppController
 {
+    public $helpers = [
+        'Sidebar'
+    ];
 
     /**
      * Index method
@@ -34,6 +38,8 @@ class DevicesController extends AppController
         $device = $this->Devices->get($id, [
             'contain' => []
         ]);
+
+        $device->softwares = [ /* TODO */ ];
         $this->set('device', $device);
         $this->set('_serialize', ['device']);
     }
@@ -101,5 +107,17 @@ class DevicesController extends AppController
             $this->Flash->error(__('The device could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * Monitoring screen.
+     *
+     * @return void
+     */
+    public function monitoring()
+    {
+        $this->request->allowMethod(['get']);
+        $list = $this->Devices->find()->select(['id', 'name'])->combine('id', 'name');
+        $this->set('devices', $list);
     }
 }

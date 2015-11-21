@@ -7,14 +7,15 @@ use Cake\ORM\Entity;
  * Device Entity.
  *
  * @property int $id
+ * @property string $name
  * @property int $update_interval
  * @property \Cake\I18n\Time $last_updated
  * @property string $ip_address
  * @property string $snmp_community
+ * @property string $description
  */
 class Device extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
