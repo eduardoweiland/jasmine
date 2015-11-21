@@ -40,6 +40,12 @@ class QueryShell extends Shell
         return true;
     }
 
+    /**
+     * Updates a device by issuing SNMP GET requests for all informations
+     * that this software handles.
+     *
+     * @param Device $device Device to be updated.
+     */
     private function updateDevice(Device $device)
     {
         $snmp = new SNMP(SNMP::VERSION_2C, $device->ip_address, $device->snmp_community);
@@ -48,7 +54,25 @@ class QueryShell extends Shell
         $snmp->quick_print = true;
         $snmp->enum_print = true;
 
-        $data = $snmp->get([
+        $data = $this->queryDeviceData($snmp);
+        $softwares = $snmp->walk('HOST-RESOURCES-MIB::hrSWInstalledTable', true);
+
+        debug($data);
+        debug($softwares);
+
+        $device->last_updated = Time::now();
+        $this->Devices->save($device);
+    }
+
+    /**
+     * Get scalar information from one device.
+     *
+     * @param SNMP $snmp SNMP connection with the specified device.
+     * @return DeviceData Object with latest information for this device.
+     */
+    private function queryDeviceData(SNMP $snmp)
+    {
+        $rawData = $snmp->get([
             'SNMPv2-MIB::sysDescr.0',
             'HOST-RESOURCES-MIB::hrSystemUptime.0',
             'UCD-SNMP-MIB::memTotalReal.0',
@@ -58,12 +82,29 @@ class QueryShell extends Shell
             'UCD-SNMP-MIB::dskUsed.1'
         ]);
 
-        $softwares = $snmp->walk('HOST-RESOURCES-MIB::hrSWInstalledTable', true);
+        $data = new DeviceData();
+        $data->description = $rawData['SNMPv2-MIB::sysDescr.0'];
 
-        debug($data);
-        debug($softwares);
+        return $data;
+    }
 
-        $device->last_updated = Time::now();
-        $this->Devices->save($device);
+    /**
+     * Get table of softwares installed on device.
+     *
+     * @param SNMP $snmp SNMP connection with the specified device.
+     * @return DeviceSoftware[] Array of objects with table of installed software.
+     */
+    private function queryDeviceSoftware(SNMP $snmp)
+    {
+        $rawData = $snmp->walk('HOST-RESOURCES-MIB::hrSWInstalledTable', true);
+        $softwares = [];
+
+        foreach ($rawData as $oid => $info) {
+            $software = new DeviceSoftware();
+            $software->name = $info->name;
+            $softwares[] = $software;
+        }
+
+        return $softwares;
     }
 }
