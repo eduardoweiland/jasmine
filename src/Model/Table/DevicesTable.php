@@ -26,6 +26,16 @@ class DevicesTable extends Table
         $this->table('devices');
         $this->displayField('id');
         $this->primaryKey('id');
+
+        $this->hasMany('DeviceData', [
+            'propertyName' => 'device_data',
+            'dependent' => true
+        ]);
+
+        $this->hasMany('DeviceSoftware', [
+            'propertyName' => 'device_softwares',
+            'dependent' => true
+        ]);
     }
 
     /**

@@ -13,6 +13,8 @@ use Cake\ORM\Entity;
  * @property string $ip_address
  * @property string $snmp_community
  * @property string $description
+ * @property DeviceData[] $device_data
+ * @property DeviceSoftware[] $device_softwares
  */
 class Device extends Entity
 {
@@ -29,4 +31,13 @@ class Device extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    public function appendDeviceData(DeviceData $data)
+    {
+        if (!is_array($this->device_data)) {
+            $this->device_data = [];
+        }
+
+        $this->device_data[] = $data;
+    }
 }

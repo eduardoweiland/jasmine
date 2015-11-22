@@ -3,6 +3,9 @@
 namespace App\Shell;
 
 use App\Model\Entity\Device;
+use App\Model\Entity\DeviceData;
+use App\Model\Entity\DeviceSoftware;
+use App\Model\Table\DeviceSoftwareTable;
 use App\Model\Table\DevicesTable;
 use Cake\Console\Shell;
 use Cake\I18n\Time;
@@ -12,9 +15,18 @@ use SNMP;
  * Query shell command.
  *
  * @property DevicesTable $Devices Devices Model
+ * @property DeviceSoftwareTable $DeviceSoftware Devices Model
+ * @property Task\SnmpTask $Snmp Snmp Task
  */
 class QueryShell extends Shell
 {
+    /**
+     * Lista de tasks para serem inicializadas.
+     *
+     * @var array
+     */
+    public $tasks = ['Snmp'];
+
     /**
      * Inicializa o shell, carregando os models necessários.
      */
@@ -22,6 +34,7 @@ class QueryShell extends Shell
     {
         parent::initialize();
         $this->loadModel('Devices');
+        $this->loadModel('DeviceSoftware');
     }
 
     /**
@@ -48,60 +61,58 @@ class QueryShell extends Shell
      */
     private function updateDevice(Device $device)
     {
-        $snmp = new SNMP(SNMP::VERSION_2C, $device->ip_address, $device->snmp_community);
-        $snmp->valueretrieval = SNMP_VALUE_OBJECT | SNMP_VALUE_LIBRARY;
-        $snmp->oid_output_format = SNMP_OID_OUTPUT_NUMERIC;
-        $snmp->quick_print = true;
-        $snmp->enum_print = true;
+        $this->Snmp->open(SNMP::VERSION_2C, $device->ip_address, $device->snmp_community);
 
-        $data = $this->queryDeviceData($snmp);
-        $softwares = $snmp->walk('HOST-RESOURCES-MIB::hrSWInstalledTable', true);
+        // Remove old list of softwares of this device and get a new one
+        $this->DeviceSoftware->deleteAll(['device_id' => $device->id]);
+        $device->device_softwares = $this->queryDeviceSoftware();
 
-        debug($data);
-        debug($softwares);
+        // Get other informations from the device
+        $device->appendDeviceData($this->queryDeviceData());
 
+        // Save them all
         $device->last_updated = Time::now();
         $this->Devices->save($device);
+
+        $this->Snmp->close();
     }
 
     /**
      * Get scalar information from one device.
      *
-     * @param SNMP $snmp SNMP connection with the specified device.
-     * @return DeviceData Object with latest information for this device.
+     * @return DeviceData Object with latest information for the device.
      */
-    private function queryDeviceData(SNMP $snmp)
+    private function queryDeviceData()
     {
-        $rawData = $snmp->get([
-            'SNMPv2-MIB::sysDescr.0',
-            'HOST-RESOURCES-MIB::hrSystemUptime.0',
-            'UCD-SNMP-MIB::memTotalReal.0',
-            'UCD-SNMP-MIB::memAvailReal.0',
-            'UCD-SNMP-MIB::dskTotal.1',
-            'UCD-SNMP-MIB::dskAvail.1',
-            'UCD-SNMP-MIB::dskUsed.1'
+        $data = $this->Snmp->getMany([
+            'description'    => 'SNMPv2-MIB::sysDescr.0',
+            'uptime'         => 'HOST-RESOURCES-MIB::hrSystemUptime.0',
+            'total_ram'      => 'UCD-SNMP-MIB::memTotalReal.0',
+            'available_ram'  => 'UCD-SNMP-MIB::memAvailReal.0',
+            'total_disk'     => 'UCD-SNMP-MIB::dskTotal.1',
+            'available_disk' => 'UCD-SNMP-MIB::dskAvail.1',
+            'used_disk'      => 'UCD-SNMP-MIB::dskUsed.1'
         ]);
 
-        $data = new DeviceData();
-        $data->description = $rawData['SNMPv2-MIB::sysDescr.0'];
+        $deviceData = new DeviceData($data);
+        $deviceData->used_ram = $deviceData->total_ram - $deviceData->available_ram;
 
-        return $data;
+        return $deviceData;
     }
 
     /**
      * Get table of softwares installed on device.
      *
-     * @param SNMP $snmp SNMP connection with the specified device.
      * @return DeviceSoftware[] Array of objects with table of installed software.
      */
-    private function queryDeviceSoftware(SNMP $snmp)
+    private function queryDeviceSoftware()
     {
-        $rawData = $snmp->walk('HOST-RESOURCES-MIB::hrSWInstalledTable', true);
+        $list = $this->Snmp->getList('HOST-RESOURCES-MIB::hrSWInstalledName');
         $softwares = [];
 
-        foreach ($rawData as $oid => $info) {
+        foreach ($list as $name) {
             $software = new DeviceSoftware();
-            $software->name = $info->name;
+            $software->name = $name;
             $softwares[] = $software;
         }
 
