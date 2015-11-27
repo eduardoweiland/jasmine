@@ -4,20 +4,16 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Device Entity.
+ * DeviceSoftware Entity.
  *
  * @property int $id
+ * @property int $device_id
+ * @property \App\Model\Entity\Device $device
  * @property string $name
- * @property int $update_interval
- * @property \Cake\I18n\Time $last_updated
- * @property string $ip_address
- * @property string $snmp_community
- * @property string $description
- * @property DeviceData[] $device_data
- * @property DeviceSoftware[] $device_softwares
  */
-class Device extends Entity
+class DeviceSoftware extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -31,13 +27,4 @@ class Device extends Entity
         '*' => true,
         'id' => false,
     ];
-
-    public function appendDeviceData(DeviceData $data)
-    {
-        if (!is_array($this->device_data)) {
-            $this->device_data = [];
-        }
-
-        $this->device_data[] = $data;
-    }
 }
