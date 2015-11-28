@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use Composer\Script\Event;
+use Composer\IO\IOInterface;
 use Exception;
 
 /**
@@ -15,8 +16,8 @@ class Installer
     /**
      * Does some routine installation tasks so people don't have to.
      *
-     * @param \Composer\Script\Event $event The composer event object.
-     * @throws \Exception Exception raised by validator.
+     * @param Event $event The composer event object.
+     * @throws Exception Exception raised by validator.
      * @return void
      */
     public static function postInstall(Event $event)
@@ -44,12 +45,12 @@ class Installer
     /**
      * Asks the user for confirmation on some action to be taken.
      *
-     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @param IOInterface $io IO interface to write to console.
      * @param string $question
      * @param boolean $default Default answer
      * @return boolean
      */
-    protected static function confirmAction($io, $question, $default = true)
+    protected static function confirmAction(IOInterface $io, $question, $default = true)
     {
         if (!$io->isInteractive()) {
             return $default;
@@ -81,10 +82,10 @@ class Installer
      * Create the config/app.php file if it does not exist.
      *
      * @param string $dir The application's root directory.
-     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @param IOInterface $io IO interface to write to console.
      * @return void
      */
-    private static function createAppConfig($dir, $io)
+    private static function createAppConfig($dir, IOInterface $io)
     {
         $appConfig = $dir . '/config/app.php';
         $defaultConfig = $dir . '/config/app.default.php';
@@ -98,10 +99,10 @@ class Installer
      * Create the `logs` and `tmp` directories.
      *
      * @param string $dir The application's root directory.
-     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @param IOInterface $io IO interface to write to console.
      * @return void
      */
-    private static function createWritableDirectories($dir, $io)
+    private static function createWritableDirectories($dir, IOInterface $io)
     {
         $paths = [
             'logs',
@@ -129,10 +130,10 @@ class Installer
      * This is not the most secure default, but it gets people up and running quickly.
      *
      * @param string $dir The application's root directory.
-     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @param IOInterface $io IO interface to write to console.
      * @return void
      */
-    private static function setFolderPermissions($dir, $io)
+    private static function setFolderPermissions($dir, IOInterface $io)
     {
         // Change the permissions on a path and output the results.
         $changePerms = function ($path, $perms, $io) {
@@ -174,10 +175,10 @@ class Installer
      * Set the security.salt value in the application's config file.
      *
      * @param string $dir The application's root directory.
-     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @param IOInterface $io IO interface to write to console.
      * @return void
      */
-    private static function setSecuritySalt($dir, $io)
+    private static function setSecuritySalt($dir, IOInterface $io)
     {
         $config = $dir . '/config/app.php';
         $originalContent = file_get_contents($config);

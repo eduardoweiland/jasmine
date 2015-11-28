@@ -5,8 +5,6 @@ namespace App\Shell;
 use App\Model\Entity\Device;
 use App\Model\Entity\DeviceData;
 use App\Model\Entity\DeviceSoftware;
-use App\Model\Table\DeviceSoftwareTable;
-use App\Model\Table\DevicesTable;
 use Cake\Console\Shell;
 use Cake\I18n\Time;
 use SNMP;
@@ -14,8 +12,8 @@ use SNMP;
 /**
  * Query shell command.
  *
- * @property DevicesTable $Devices Devices Model
- * @property DeviceSoftwareTable $DeviceSoftware Devices Model
+ * @property App\Model\Table\DevicesTable $Devices Devices Model
+ * @property App\Model\Table\DeviceSoftwareTable $DeviceSoftware Devices Model
  * @property Task\SnmpTask $Snmp Snmp Task
  */
 class QueryShell extends Shell
