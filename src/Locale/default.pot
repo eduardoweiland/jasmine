@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-10-31 22:19+0000\n"
+"POT-Creation-Date: 2015-11-27 23:16-0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,19 +14,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/DevicesController.php:54;79
+#: Controller/DevicesController.php:70;95
 msgid "The device has been saved."
 msgstr ""
 
-#: Controller/DevicesController.php:57;82
+#: Controller/DevicesController.php:73;98
 msgid "The device could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/DevicesController.php:101
+#: Controller/DevicesController.php:117
 msgid "The device has been deleted."
 msgstr ""
 
-#: Controller/DevicesController.php:103
+#: Controller/DevicesController.php:119
 msgid "The device could not be deleted. Please, try again."
 msgstr ""
 
@@ -38,7 +38,7 @@ msgid "Actions"
 msgstr ""
 
 #: Template/Devices/add.ctp:5
-#: Template/Devices/edit.ctp:11
+#: Template/Devices/edit.ctp:6
 #: Template/Devices/view.ctp:7
 msgid "List Devices"
 msgstr ""
@@ -48,51 +48,51 @@ msgid "Add Device"
 msgstr ""
 
 #: Template/Devices/add.ctp:15
-#: Template/Devices/edit.ctp:21
+#: Template/Devices/edit.ctp:16
 #: Template/Devices/index.ctp:14
-#: Template/Devices/view.ctp:22
+#: Template/Devices/view.ctp:23
 msgid "Name"
 msgstr ""
 
 #: Template/Devices/add.ctp:18
-#: Template/Devices/edit.ctp:24
+#: Template/Devices/edit.ctp:19
 #: Template/Devices/index.ctp:15
 msgid "IP Address"
 msgstr ""
 
 #: Template/Devices/add.ctp:23
-#: Template/Devices/edit.ctp:29
+#: Template/Devices/edit.ctp:24
 msgid "Update Interval (in minutes)"
 msgstr ""
 
 #: Template/Devices/add.ctp:26
-#: Template/Devices/edit.ctp:32
+#: Template/Devices/edit.ctp:27
 msgid "SNMP Community"
 msgstr ""
 
 #: Template/Devices/add.ctp:31
-#: Template/Devices/edit.ctp:37
+#: Template/Devices/edit.ctp:32
 #: Template/Devices/index.ctp:17
 msgid "Description"
 msgstr ""
 
 #: Template/Devices/add.ctp:35
-#: Template/Devices/edit.ctp:41
+#: Template/Devices/edit.ctp:36
 msgid "Submit"
 msgstr ""
 
-#: Template/Devices/edit.ctp:6
-#: Template/Devices/index.ctp:31
-msgid "Delete"
+#: Template/Devices/edit.ctp:5
+#: Template/Devices/view.ctp:6
+msgid "Delete Device"
 msgstr ""
 
-#: Template/Devices/edit.ctp:8
+#: Template/Devices/edit.ctp:5
 #: Template/Devices/index.ctp:31
 #: Template/Devices/view.ctp:6
 msgid "Are you sure you want to delete {0}?"
 msgstr ""
 
-#: Template/Devices/edit.ctp:18
+#: Template/Devices/edit.ctp:13
 #: Template/Devices/view.ctp:5
 msgid "Edit Device"
 msgstr ""
@@ -123,24 +123,26 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: Template/Devices/index.ctp:31
+msgid "Delete"
+msgstr ""
+
 #: Template/Devices/index.ctp:39
+#: Template/Devices/view.ctp:43
 msgid "previous"
 msgstr ""
 
 #: Template/Devices/index.ctp:41
+#: Template/Devices/view.ctp:43
 msgid "next"
 msgstr ""
 
-#: Template/Devices/monitoring.ctp:8
+#: Template/Devices/monitoring.ctp:11
 msgid "Refresh interval: "
 msgstr ""
 
-#: Template/Devices/monitoring.ctp:11
+#: Template/Devices/monitoring.ctp:14
 msgid "Refresh now"
-msgstr ""
-
-#: Template/Devices/view.ctp:6
-msgid "Delete Device"
 msgstr ""
 
 #: Template/Devices/view.ctp:13
@@ -163,15 +165,11 @@ msgstr ""
 msgid "Installed Software"
 msgstr ""
 
-#: Template/Devices/view.ctp:23
-msgid "Install Date"
+#: Template/Devices/view.ctp:19
+msgid "{{count}} softwares found"
 msgstr ""
 
-#: Template/Devices/view.ctp:24
-msgid "Type"
-msgstr ""
-
-#: Template/Devices/view.ctp:30
+#: Template/Devices/view.ctp:31
 msgid "No data available"
 msgstr ""
 

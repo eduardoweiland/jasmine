@@ -16,27 +16,29 @@
     <p><?= __('Last Updated') ?>: <?= $device->last_updated ? h($device->last_updated) : __('Never') ?></p>
 
     <h4><?= __('Installed Software') ?></h4>
+    <?= $this->Paginator->counter(['format' => __('{{count}} softwares found')]); ?>
     <table class="table">
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('name', __('Name')) ?></th>
-                <th><?= $this->Paginator->sort('install_date', __('Install Date')) ?></th>
-                <th><?= $this->Paginator->sort('type', __('Type')) ?></th>
+<!--                <th>< ?= $this->Paginator->sort('install_date', __('Install Date')) ?></th>
+                <th>< ?= $this->Paginator->sort('type', __('Type')) ?></th>-->
             </tr>
         </thead>
         <tbody>
-            <?php if (empty($device->softwares)): ?>
+            <?php if (empty($softwares)): ?>
             <tr>
                 <td colspan="3"><?= __('No data available') ?></td>
             </tr>
             <?php endif; ?>
-            <?php foreach ($device->softwares as $software): ?>
+            <?php foreach ($softwares as $software): ?>
             <tr>
                 <td><?= h($software->name) ?></td>
-                <td><?= h($software->install_date) ?></td>
-                <td><?= h($software->type) ?></td>
+<!--                <td>< ?= h($software->install_date) ?></td>
+                <td>< ?= h($software->type) ?></td>-->
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?= $this->Paginator->numbers(['prev' => '< ' . __('previous'), 'next' => __('next') . ' >']); ?>
 </main>

@@ -15,6 +15,12 @@ class DevicesController extends AppController
         'Sidebar'
     ];
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadModel('DeviceSoftware');
+    }
+
     /**
      * Index method
      *
@@ -39,8 +45,14 @@ class DevicesController extends AppController
             'contain' => []
         ]);
 
-        $device->softwares = [ /* TODO */ ];
+        $softwares = $this->paginate(
+                $this->DeviceSoftware
+                    ->find()
+                    ->where(['device_id' => $device->id])
+        );
+
         $this->set('device', $device);
+        $this->set('softwares', $softwares);
         $this->set('_serialize', ['device']);
     }
 
