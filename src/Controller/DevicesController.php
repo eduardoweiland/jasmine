@@ -139,6 +139,12 @@ class DevicesController extends AppController
         $this->request->allowMethod(['get']);
         $list = $this->Devices->find()->select(['id', 'name'])->combine('id', 'name');
         $this->set('devices', $list);
+        $this->set('intervals', [
+            '15'  => __('15 minutes'),
+            '30'  => __('30 minutes'),
+            '60'  => __('1 hour'),
+            '120' => __('2 hours')
+        ]);
     }
 
     /**
