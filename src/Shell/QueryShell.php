@@ -94,6 +94,7 @@ class QueryShell extends Shell
 
         $deviceData = new DeviceData($data);
         $deviceData->used_ram = $deviceData->total_ram - $deviceData->available_ram;
+        $deviceData->updated = new \DateTime();
 
         return $deviceData;
     }

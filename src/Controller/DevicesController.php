@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Network\Exception\BadRequestException;
 
 /**
  * Devices Controller
@@ -20,6 +21,7 @@ class DevicesController extends AppController
     public function initialize()
     {
         parent::initialize();
+        $this->loadComponent('RequestHandler');
         $this->loadModel('DeviceSoftware');
         $this->loadModel('DeviceData');
     }
@@ -137,5 +139,54 @@ class DevicesController extends AppController
         $this->request->allowMethod(['get']);
         $list = $this->Devices->find()->select(['id', 'name'])->combine('id', 'name');
         $this->set('devices', $list);
+    }
+
+    /**
+     * Action to return JSON data used in the monitoring screen.
+     *
+     * @return void
+     */
+    public function monitoringData()
+    {
+        $this->request->allowMethod(['get']);
+        $this->RequestHandler->renderAs($this, 'json');
+
+        $listOfDevices = $this->request->query('devices');
+        $dataInterval  = $this->request->query('interval');
+
+        if ($listOfDevices === null || $dataInterval === null) {
+            throw new BadRequestException('Required parameters were not specified');
+        }
+
+        $return = [];
+
+        $devices = $this->Devices
+                ->find()
+                ->where(['id IN' => $listOfDevices])
+                ->toArray();
+
+        $interval = \DateInterval::createFromDateString(intval($dataInterval) . ' minutes');
+        $startInterval = (new \DateTime())->sub($interval);
+
+        foreach ($devices as $device) {
+            $deviceInfo = [
+                'name' => $device->name,
+                'uptime' => null,
+                'data' => []
+            ];
+
+            $recent = $this->DeviceData->findRecentData($device, $startInterval)->toArray();
+
+            if (is_array($recent) && count($recent) >= 1) {
+                $latest = $recent[count($recent) - 1];
+                $deviceInfo['uptime'] = $latest->uptime;
+            }
+
+            $deviceInfo['data'] = $recent;
+            $return[] = $deviceInfo;
+        }
+
+        $this->set('devices', $return);
+        $this->set('_serialize', ['devices']);
     }
 }

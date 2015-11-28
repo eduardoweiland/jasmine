@@ -5,6 +5,7 @@ use App\Model\Entity\Device;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use DateTime;
 
 /**
  * DeviceData Model
@@ -47,6 +48,23 @@ class DeviceDataTable extends Table
                 ->where(['device_id' => $device->id])
                 ->order(['updated' => 'DESC'])
                 ->first();
+
+        return $query;
+    }
+
+    /**
+     * Find recent data for one device, starting from specified date.
+     *
+     * @param Device $device Device for which data will be retrieved.
+     * @param DateTime $start Starting date to find.
+     * @return Cake\ORM\Query
+     */
+    public function findRecentData(Device $device, DateTime $start)
+    {
+        $query = $this
+                ->find()
+                ->where(['device_id' => $device->id, 'updated >=' => $start])
+                ->order(['updated' => 'ASC']);
 
         return $query;
     }
