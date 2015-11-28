@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-11-27 23:16-0200\n"
+"POT-Creation-Date: 2015-11-28 09:26-0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,19 +14,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/DevicesController.php:70;95
+#: Controller/DevicesController.php:76;101
 msgid "The device has been saved."
 msgstr ""
 
-#: Controller/DevicesController.php:73;98
+#: Controller/DevicesController.php:79;104
 msgid "The device could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/DevicesController.php:117
+#: Controller/DevicesController.php:123
 msgid "The device has been deleted."
 msgstr ""
 
-#: Controller/DevicesController.php:119
+#: Controller/DevicesController.php:125
 msgid "The device could not be deleted. Please, try again."
 msgstr ""
 
@@ -50,7 +50,7 @@ msgstr ""
 #: Template/Devices/add.ctp:15
 #: Template/Devices/edit.ctp:16
 #: Template/Devices/index.ctp:14
-#: Template/Devices/view.ctp:23
+#: Template/Devices/view.ctp:26
 msgid "Name"
 msgstr ""
 
@@ -128,12 +128,12 @@ msgid "Delete"
 msgstr ""
 
 #: Template/Devices/index.ctp:39
-#: Template/Devices/view.ctp:43
+#: Template/Devices/view.ctp:46
 msgid "previous"
 msgstr ""
 
 #: Template/Devices/index.ctp:41
-#: Template/Devices/view.ctp:43
+#: Template/Devices/view.ctp:46
 msgid "next"
 msgstr ""
 
@@ -162,14 +162,18 @@ msgid "Never"
 msgstr ""
 
 #: Template/Devices/view.ctp:18
-msgid "Installed Software"
+msgid "System Description (SNMP)"
 msgstr ""
 
-#: Template/Devices/view.ctp:19
+#: Template/Devices/view.ctp:21
+msgid "Installed Softwares"
+msgstr ""
+
+#: Template/Devices/view.ctp:22
 msgid "{{count}} softwares found"
 msgstr ""
 
-#: Template/Devices/view.ctp:31
+#: Template/Devices/view.ctp:34
 msgid "No data available"
 msgstr ""
 

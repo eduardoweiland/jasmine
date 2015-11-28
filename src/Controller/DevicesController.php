@@ -7,6 +7,8 @@ use App\Controller\AppController;
  * Devices Controller
  *
  * @property \App\Model\Table\DevicesTable $Devices
+ * @property \App\Model\Table\DeviceSoftwareTable $DeviceSoftware
+ * @property \App\Model\Table\DeviceDataTable $DeviceData
  * @property \App\View\Helper\Sidebar $Sidebar
  */
 class DevicesController extends AppController
@@ -19,6 +21,7 @@ class DevicesController extends AppController
     {
         parent::initialize();
         $this->loadModel('DeviceSoftware');
+        $this->loadModel('DeviceData');
     }
 
     /**
@@ -51,9 +54,12 @@ class DevicesController extends AppController
                     ->where(['device_id' => $device->id])
         );
 
+        $data = $this->DeviceData->findLatestData($device);
+
         $this->set('device', $device);
         $this->set('softwares', $softwares);
-        $this->set('_serialize', ['device']);
+        $this->set('data', $data);
+        $this->set('_serialize', ['device', 'softwares', 'data']);
     }
 
     /**

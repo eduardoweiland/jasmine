@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Table;
 
+use App\Model\Entity\Device;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -31,6 +32,23 @@ class DeviceDataTable extends Table
             'foreignKey' => 'device_id',
             'joinType' => 'INNER'
         ]);
+    }
+
+    /**
+     * Find latest data for one device.
+     *
+     * @param Device $device
+     * @return Cake\ORM\Query
+     */
+    public function findLatestData(Device $device)
+    {
+        $query = $this
+                ->find()
+                ->where(['device_id' => $device->id])
+                ->order(['updated' => 'DESC'])
+                ->first();
+
+        return $query;
     }
 
     /**

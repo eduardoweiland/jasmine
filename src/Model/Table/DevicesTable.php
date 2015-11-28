@@ -2,7 +2,6 @@
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -43,7 +42,7 @@ class DevicesTable extends Table
      *
      * This list is based on each device update interval and last updated time.
      *
-     * @return Query
+     * @return Cake\ORM\Query
      */
     public function findUpdatePending()
     {

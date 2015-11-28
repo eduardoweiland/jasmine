@@ -15,7 +15,10 @@
     <p><?= $device->description ? h($device->description) : __('No description') ?></p>
     <p><?= __('Last Updated') ?>: <?= $device->last_updated ? h($device->last_updated) : __('Never') ?></p>
 
-    <h4><?= __('Installed Software') ?></h4>
+    <h4><?= __('System Description (SNMP)') ?></h4>
+    <p><?= $data->description ?></p>
+
+    <h4><?= __('Installed Softwares') ?></h4>
     <?= $this->Paginator->counter(['format' => __('{{count}} softwares found')]); ?>
     <table class="table">
         <thead>
