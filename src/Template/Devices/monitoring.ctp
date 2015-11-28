@@ -1,9 +1,15 @@
-<?php $this->Html->css('bootstrap-multiselect.css', ['block' => true]); ?>
-<?php $this->Html->script('bootstrap-multiselect.js', ['block' => true]); ?>
-<?php $this->Html->script('jquery.flot.min.js', ['block' => true]); ?>
-<?php $this->Html->script('jquery.flot.resize.min.js', ['block' => true]); ?>
-<?php $this->Html->script('jquery.flot.time.min.js', ['block' => true]); ?>
-<?php $this->Html->script('monitoring.js', ['block' => true]); ?>
+<?php
+    $this->Html->css('bootstrap-multiselect.css', ['block' => true]);
+
+    $this->Html->script([
+        'vendor/bootstrap-multiselect.js',
+        'vendor/jquery.flot.min.js',
+        'vendor/jquery.flot.resize.min.js',
+        'vendor/jquery.flot.time.min.js',
+        'monitoring.js'
+    ], ['block' => true]);
+?>
+
 <main class="col-md-12">
     <div class="panel panel-default">
         <div class="panel-body row form-inline">

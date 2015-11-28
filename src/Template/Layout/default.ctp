@@ -15,8 +15,8 @@
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
-    <?= $this->Html->script('jquery-2.1.4.min.js') ?>
-    <?= $this->Html->script('bootstrap.min.js') ?>
+    <?= $this->Html->script('vendor/jquery-2.1.4.min.js') ?>
+    <?= $this->Html->script('vendor/bootstrap.min.js') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
