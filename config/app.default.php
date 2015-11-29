@@ -9,7 +9,7 @@ return [
      * Development Mode:
      * true: Errors and warnings shown.
      */
-    'debug' => true,
+    'debug' => __DEBUG__,
 
     /**
      * Configure basic information about the application.

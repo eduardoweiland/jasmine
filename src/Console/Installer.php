@@ -34,6 +34,7 @@ class Installer
         }
 
         static::setSecuritySalt($rootDir, $io);
+        static::setDebugLevel($rootDir, $event);
 
         // TODO: create database (ask connection parameters)
 
@@ -197,5 +198,35 @@ class Installer
             return;
         }
         $io->write('Unable to update Security.salt value.');
+    }
+
+    /**
+     * Set the debug flag value in the application's config file.
+     *
+     * @param string $dir The application's root directory.
+     * @param Event $event The composer event object.
+     * @return void
+     */
+    private static function setDebugLevel($dir, Event $event)
+    {
+        $io = $event->getIO();
+        $debug = $event->isDevMode() ? 'true' : 'false';
+
+        $config = $dir . '/config/app.php';
+        $originalContent = file_get_contents($config);
+
+        $newContent = str_replace('__DEBUG__', $debug, $originalContent, $count);
+
+        if ($count == 0) {
+            $io->write('No debug placeholder to replace.');
+            return;
+        }
+
+        $result = file_put_contents($config, $newContent);
+        if ($result) {
+            $io->write('Updated debug value in config/app.php');
+            return;
+        }
+        $io->write('Unable to update debug value.');
     }
 }
