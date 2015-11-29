@@ -29,6 +29,18 @@ A interface _web_ é desenvolvida utilizando os seguintes componentes e bibliote
 
 ## Instalação
 
+O JASMINE pode ser instalado e executado de duas formas: utilizando um container Docker ou instalando manualmente.
+
+### Docker
+
+A instalação pelo Docker é a mais simples, necessita de apenas um comando:
+
+    $ docker run --name jasmine -d -p 80:80 -p 161:161 eduardoweiland/jasmine-docker
+
+Para mais detalhes, consultar o projeto [jasmine-docker][].
+
+### Manualmente
+
 Instalar as dependências pelo Composer:
 
     $ composer install
@@ -65,3 +77,4 @@ Criar as tabelas no banco de dados, utilizando o `cake migrations`:
 [Flot]: http://www.flotcharts.org "Flot: Attractive JavaScript plotting for jQuery"
 [bootstrap-multiselect]: https://github.com/davidstutz/bootstrap-multiselect "Bootstrap Multiselect"
 [CakePHP 3, Bootstrap Helpers]: https://holt59.github.io/cakephp3-bootstrap-helpers/ "CakePHP 3.x helpers for the Bootstrap 3"
+[jasmine-docker]: https://github.com/eduardoweiland/jasmine-docker "JASMINE Docker Container"
