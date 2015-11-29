@@ -11,6 +11,7 @@
         'vendor/moment-with-locales.min.js',
         'vendor/moment-duration-format.js',
         'knockout-flotchart.js',
+        'knockout-multiselect.js',
         'monitoring.js'
     ], ['block' => true]);
 ?>
@@ -35,7 +36,7 @@
             </div>
             <div class="col-sm-6">
                 <?= $this->Form->label(__('Devices:')) ?>
-                <?= $this->Form->select('devices', $devices, ['multiple' => true]) ?>
+                <?= $this->Form->select('devices', $devices, ['multiple' => true, 'data-bind' => 'selectedOptions: selectedDevices, multiselect: {maxHeight: 200, buttonWidth: \'100%\'}']) ?>
             </div>
         </div>
     </div>
@@ -46,6 +47,11 @@
             <div class="plot" data-bind="flotChart: ramData, flotOptions: $parent.PLOT_OPTIONS"></div>
             <div class="plot" data-bind="flotChart: diskData, flotOptions: $parent.PLOT_OPTIONS"></div>
             <div class="clearfix"></div>
+        </div>
+    </div>
+    <div data-bind="if: selectedDevices().length === 0">
+        <div class="alert alert-info col-sm-6 col-sm-offset-3">
+            <?= __('No device selected') ?>
         </div>
     </div>
 </main>

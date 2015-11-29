@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Network\Exception\BadRequestException;
 
 /**
  * Devices Controller
@@ -159,37 +158,34 @@ class DevicesController extends AppController
 
         $listOfDevices = $this->request->query('devices');
         $dataInterval  = $this->request->query('interval');
-
-        if ($listOfDevices === null || $dataInterval === null) {
-            throw new BadRequestException('Required parameters were not specified');
-        }
-
         $return = [];
 
-        $devices = $this->Devices
-                ->find()
-                ->where(['id IN' => $listOfDevices])
-                ->toArray();
+        if ($listOfDevices !== null && $dataInterval !== null) {
+            $devices = $this->Devices
+                    ->find()
+                    ->where(['id IN' => $listOfDevices])
+                    ->toArray();
 
-        $interval = \DateInterval::createFromDateString(intval($dataInterval) . ' minutes');
-        $startInterval = (new \DateTime())->sub($interval);
+            $interval = \DateInterval::createFromDateString(intval($dataInterval) . ' minutes');
+            $startInterval = (new \DateTime())->sub($interval);
 
-        foreach ($devices as $device) {
-            $deviceInfo = [
-                'name' => $device->name,
-                'uptime' => null,
-                'data' => []
-            ];
+            foreach ($devices as $device) {
+                $deviceInfo = [
+                    'name' => $device->name,
+                    'uptime' => null,
+                    'data' => []
+                ];
 
-            $recent = $this->DeviceData->findRecentData($device, $startInterval)->toArray();
+                $recent = $this->DeviceData->findRecentData($device, $startInterval)->toArray();
 
-            if (is_array($recent) && count($recent) >= 1) {
-                $latest = $recent[count($recent) - 1];
-                $deviceInfo['uptime'] = $latest->uptime;
+                if (is_array($recent) && count($recent) >= 1) {
+                    $latest = $recent[count($recent) - 1];
+                    $deviceInfo['uptime'] = $latest->uptime;
+                }
+
+                $deviceInfo['data'] = $recent;
+                $return[] = $deviceInfo;
             }
-
-            $deviceInfo['data'] = $recent;
-            $return[] = $deviceInfo;
         }
 
         $this->set('devices', $return);

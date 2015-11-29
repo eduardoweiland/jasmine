@@ -10,10 +10,12 @@
             this.updateTimer      = null;
             this.updateInterval   = ko.observable(5);
             this.dataInterval     = ko.observable(15);
-            this.selectedDevices  = ko.observableArray([1,2,3]);
+            this.selectedDevices  = ko.observableArray([]);
             this.monitoredDevices = ko.observableArray([]);
 
-            this.updateInterval.subscribe(this.refresh, this);
+            this.updateInterval .subscribe(this.refresh, this);
+            this.dataInterval   .subscribe(this.refresh, this);
+            this.selectedDevices.subscribe(this.refresh, this);
         },
 
         /**
@@ -140,17 +142,8 @@
         }
     };
 
-    $(function($) {
-        // Lista de dispositivos para selecionar
-        $('[name="devices[]"]').multiselect({
-            maxHeight: 200,
-            buttonWidth: '100%'
-        });
-
+    $(function() {
         var monitoring = new Monitoring();
         ko.applyBindings(monitoring, document.getElementById('monitoring'));
-
-        // Atualização inicial dos dados
-        monitoring.refresh();
     });
 })(window.jQuery, window.ko);
