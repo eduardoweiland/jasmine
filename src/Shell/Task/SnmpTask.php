@@ -108,6 +108,26 @@ class SnmpTask extends Shell
         return $parsedResponse;
     }
 
+    /**
+     * Request a list of SNMP instances for a specified object ID.
+     *
+     * Example usage:
+     *
+     * ``` php
+     * $snmpTask->getList('HOST-RESOURCES-MIB::hrSWInstalledName');
+     * // Returned value:
+     * // Array
+     * // (
+     * //     [0] => php-5.6.15-1.fc23
+     * //     [1] => php-cli-5.6.15-1.fc23
+     * //     [2] => php-common-5.6.15-1.fc23
+     * //     [...] => ...
+     * // )
+     * ```
+     *
+     * @param string $oid Parent object ID
+     * @return mixed[]
+     */
     public function getList($oid)
     {
         $response = $this->snmp->walk($oid);
@@ -121,35 +141,10 @@ class SnmpTask extends Shell
     }
 
     /**
+     * Parse SNMP response value for an object.
      *
-     * @param string $oid Object ID of the table to be retrieved.
-     * @param array $columnMap
-     */
-    public function getTable($oid, $columnMap = null)
-    {
-        throw new \RuntimeException('Not implemented.');
-        $response = $this->snmp->walk($oid);
-        $table = [];
-
-        foreach ($response as $suffix => $value) {
-            $separator = strrpos($suffix, '.');
-            $column = substr($suffix, 0, $separator);
-            $index = substr($suffix, $separator + 1);
-
-            $parsedValue = $this->parseResponseValue($value);
-
-            if (!$columnMap) {
-                $table[$index][$column] = $parsedValue;
-            }
-            else if (isset($columnMap[$column])) {
-                $table[$index][$columnMap[$column]] = $parsedValue;
-            }
-        }
-
-        debug($table[1]);
-    }
-
-    /**
+     * This method identifies the object type and convert the returned value to
+     * the matching PHP data type.
      *
      * @param \stdClass $response
      * @return mixed Parsed response value.
