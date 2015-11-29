@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-11-28 09:26-0200\n"
+"POT-Creation-Date: 2015-11-29 13:33-0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,20 +14,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/DevicesController.php:76;101
+#: Controller/DevicesController.php:77;102
 msgid "The device has been saved."
 msgstr ""
 
-#: Controller/DevicesController.php:79;104
+#: Controller/DevicesController.php:80;105
 msgid "The device could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/DevicesController.php:123
+#: Controller/DevicesController.php:124
 msgid "The device has been deleted."
 msgstr ""
 
-#: Controller/DevicesController.php:125
+#: Controller/DevicesController.php:126
 msgid "The device could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/DevicesController.php:142
+msgid "15 minutes"
+msgstr ""
+
+#: Controller/DevicesController.php:143
+msgid "30 minutes"
+msgstr ""
+
+#: Controller/DevicesController.php:144
+msgid "1 hour"
+msgstr ""
+
+#: Controller/DevicesController.php:145
+msgid "2 hours"
 msgstr ""
 
 #: Template/Devices/add.ctp:3
@@ -137,12 +153,24 @@ msgstr ""
 msgid "next"
 msgstr ""
 
-#: Template/Devices/monitoring.ctp:11
-msgid "Refresh interval: "
+#: Template/Devices/monitoring.ctp:24
+msgid "Refresh interval:"
 msgstr ""
 
-#: Template/Devices/monitoring.ctp:14
-msgid "Refresh now"
+#: Template/Devices/monitoring.ctp:34
+msgid "Data Interval:"
+msgstr ""
+
+#: Template/Devices/monitoring.ctp:38
+msgid "Devices:"
+msgstr ""
+
+#: Template/Devices/monitoring.ctp:46
+msgid "Uptime:"
+msgstr ""
+
+#: Template/Devices/monitoring.ctp:54
+msgid "No device selected"
 msgstr ""
 
 #: Template/Devices/view.ctp:13
