@@ -12,7 +12,14 @@ td.actions {
 }
 
 #monitoring .device .plot {
-    height: 300px;
     width: 50%;
     float: left;
+}
+
+#monitoring .device .plot > figcaption {
+    font-weight: bold;
+}
+
+#monitoring .device .plot > div {
+    height: 300px; 
 }

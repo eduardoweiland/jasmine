@@ -44,8 +44,14 @@
         <div class="device">
             <h3 data-bind="text: name"></h3>
             <h5><?= __('Uptime:') ?> <span data-bind="text: uptime"></span></h5>
-            <div class="plot" data-bind="flotChart: ramData, flotOptions: $parent.PLOT_OPTIONS"></div>
-            <div class="plot" data-bind="flotChart: diskData, flotOptions: $parent.PLOT_OPTIONS"></div>
+            <figure class="plot">
+                <figcaption><?= __('RAM usage') ?></figcaption>
+                <div data-bind="flotChart: ramData, flotOptions: $parent.PLOT_OPTIONS"></div>
+            </figure>
+            <figure class="plot">
+                <figcaption><?= __('Disk usage') ?></figcaption>
+                <div data-bind="flotChart: diskData, flotOptions: $parent.PLOT_OPTIONS"></div>
+            </figure>
             <div class="clearfix"></div>
         </div>
     </div>

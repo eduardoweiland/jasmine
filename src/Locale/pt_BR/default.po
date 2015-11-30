@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASMINE\n"
-"POT-Creation-Date: 2015-11-29 13:34-0200\n"
-"PO-Revision-Date: 2015-11-29 13:34-0200\n"
+"POT-Creation-Date: 2015-11-29 23:17-0200\n"
+"PO-Revision-Date: 2015-11-29 23:17-0200\n"
 "Last-Translator: Eduardo Weiland <eduardo@eduardoweiland.info>\n"
 "Language-Team: pt_BR\n"
 "Language: pt_BR\n"
@@ -143,7 +143,7 @@ msgstr "Intervalo de atualização:"
 
 #: Template/Devices/monitoring.ctp:34
 msgid "Data Interval:"
-msgstr "Intervalo de Dados"
+msgstr "Intervalo de Dados:"
 
 #: Template/Devices/monitoring.ctp:38
 msgid "Devices:"
@@ -153,7 +153,15 @@ msgstr "Dispositivos:"
 msgid "Uptime:"
 msgstr "Uptime:"
 
-#: Template/Devices/monitoring.ctp:54
+#: Template/Devices/monitoring.ctp:48
+msgid "RAM usage"
+msgstr "Uso de RAM"
+
+#: Template/Devices/monitoring.ctp:52
+msgid "Disk usage"
+msgstr "Uso de disco"
+
+#: Template/Devices/monitoring.ctp:60
 msgid "No device selected"
 msgstr "Nenhum dispositivo selecionado"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-11-29 13:33-0200\n"
+"POT-Creation-Date: 2015-11-29 23:16-0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -169,7 +169,15 @@ msgstr ""
 msgid "Uptime:"
 msgstr ""
 
-#: Template/Devices/monitoring.ctp:54
+#: Template/Devices/monitoring.ctp:48
+msgid "RAM usage"
+msgstr ""
+
+#: Template/Devices/monitoring.ctp:52
+msgid "Disk usage"
+msgstr ""
+
+#: Template/Devices/monitoring.ctp:60
 msgid "No device selected"
 msgstr ""
 
