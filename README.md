@@ -49,7 +49,7 @@ Se for utilizado o Apache, é necessário que o módulo rewrite seja habilitado 
 
     $ sudo a2enmod rewrite
 
-Outra configuração necessária do Apache é permitir que as opções globais sejam sobrescritas pelo programa. Para isso, é necessário editar o arquivo `/etc/apache2/sites-available/000-default.conf` e adicionar as seguintes linhas dentro das tags <VirtualHost>:
+Outra configuração necessária do Apache é permitir que as opções globais sejam sobrescritas pelo programa. Para isso, é necessário editar o arquivo `/etc/apache2/sites-available/000-default.conf` e adicionar as seguintes linhas dentro das tags \<VirtualHost\>:
 
     <Directory /var/www/html/jasmine>
         AllowOverride All
