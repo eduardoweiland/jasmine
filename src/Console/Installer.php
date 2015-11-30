@@ -12,7 +12,6 @@ use Exception;
  */
 class Installer
 {
-
     /**
      * Does some routine installation tasks so people don't have to.
      *
@@ -35,8 +34,6 @@ class Installer
 
         static::setSecuritySalt($rootDir, $io);
         static::setDebugLevel($rootDir, $event);
-
-        // TODO: create database (ask connection parameters)
 
         if (class_exists('\Cake\Codeception\Console\Installer')) {
             \Cake\Codeception\Console\Installer::customizeCodeceptionBinary($event);

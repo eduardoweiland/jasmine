@@ -41,11 +41,37 @@ Para mais detalhes, consultar o projeto [jasmine-docker][].
 
 ### Manualmente
 
-Instalar as dependências pelo Composer:
+O JASMINE necessita de um servidor web (recomendado Apache) com suporte a PHP 5.4+ e um banco de dados MySQL. Para Ubuntu, o comando que deve ser utilizado para instalar esse pacotes é:
 
-    $ composer install
+    $ sudo apt-get install apache2 php5 php5-cli php5-intl php5-snmp php5-mysql mysql-server
 
-Copiar o arquivo `config/app.default.php` para `config/app.php` e configurar a conexão com o banco de dados:
+Se for utilizado o Apache, é necessário que o módulo rewrite seja habilitado para o programa funcionar corretamente. Para habilitá-lo no Ubuntu:
+
+    $ sudo a2enmod rewrite
+
+Outra configuração necessária do Apache é permitir que as opções globais sejam sobrescritas pelo programa. Para isso, é necessário editar o arquivo `/etc/apache2/sites-available/000-default.conf` e adicionar as seguintes linhas dentro das tags <VirtualHost>:
+
+    <Directory /var/www/html/jasmine>
+        AllowOverride All
+    </Directory>
+
+Depois dessas configurações serem feitas, é necessário reiniciar o Apache:
+
+    $ sudo service apache2 restart
+
+Agora, o primeiro passo da instalação é descompactar o código-fonte e movê-lo para um diretório acessível pelo servidor web (ex.: `/var/www/html/jasmine`).
+
+Em seguida, deve-se instalar as dependências (bibliotecas PHP) pelo Composer utilizando os seguintes comandos:
+
+    $ cd /var/www/html/jasmine    # deve estar dentro da pasta do código-fonte
+    $ curl -sS https://getcomposer.org/installer | php
+    $ php composer.phar install --no-dev --no-interaction
+
+Um banco de dados deve ser criado no MySQL para ser utilizado pelo JASMINE. Para fazer isso no Ubuntu:
+
+    $ mysqladmin create jasmine -u root -p
+
+Editar o arquivo `config/app.php` e configurar a conexão com o banco de dados. **Deve ser configurada a conexão `default`**. Exemplo de como ficaria a configuração para o banco de dados local, no banco de dados `jasmine` com usuário `root` e senha `root`:
 
 ```php
 // ...
@@ -56,18 +82,19 @@ Copiar o arquivo `config/app.default.php` para `config/app.php` e configurar a c
         'persistent' => false,
         'host' => 'localhost',
         'port' => '3306',
-        'username' => 'user',
-        'password' => 'password',
+        'username' => 'root',
+        'password' => 'root',
         'database' => 'jasmine',
         // ...
     ]
 ]
 ```
 
-Criar as tabelas no banco de dados, utilizando o `cake migrations`:
+Criar as tabelas no banco de dados utilizando o comando `cake migrations`:
 
     $ bin/cake migrations migrate
 
+Após esses passos, o JASMINE deve estar instalado e acessível pelo endereço http://localhost/jasmine.
 
 [CakePHP]: http://cakephp.org "The rapid development PHP framework"
 [PHP-SNMP]: http://php.net/manual/en/book.snmp.php "PHP SNMP Documentation"
