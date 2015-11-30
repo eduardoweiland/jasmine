@@ -94,7 +94,9 @@ Criar as tabelas no banco de dados utilizando o comando `cake migrations`:
 
     $ bin/cake migrations migrate
 
-Após esses passos, o JASMINE deve estar instalado e acessível pelo endereço http://localhost/jasmine.
+Após esses passos, o JASMINE deve estar instalado e acessível pelo endereço http://localhost/jasmine. O último passo necessário é a configuração da cron para atualizar os dados dos dispostivos automaticamente. Isso é feito chamando o comando `bin/cake query`. A configuração da cron para chamar esse comando a cada 5 minutos, por exemplo, ficaria assim:
+
+    */5 * * * * www-data /var/www/html/jasmine/bin/cake query
 
 [CakePHP]: http://cakephp.org "The rapid development PHP framework"
 [PHP-SNMP]: http://php.net/manual/en/book.snmp.php "PHP SNMP Documentation"
