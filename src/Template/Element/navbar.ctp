@@ -26,15 +26,6 @@ echo $this->Navbar->create(
 
     echo $this->Navbar->endMenu();
 
+    echo $this->Navbar->text('Trabalho de Administração e Gerência de Redes - UNISC 2015 - Eduardo Weiland', ['class' => 'navbar-right']);
 
-
-    echo $this->Navbar->beginMenu(['class' => 'navbar-right']);
-
-        echo $this->Navbar->link(
-                $this->Html->icon('cog') . '&nbsp;' . __('Settings'),
-                ['controller' => 'Settings', 'action' => 'index'],
-                [],
-                ['escape' => false]);
-
-    echo $this->Navbar->endMenu();
 echo $this->Navbar->end();
