@@ -51,7 +51,7 @@ Depois dessas configurações serem feitas, é necessário reiniciar o Apache:
 
     $ sudo service apache2 restart
 
-Agora, o primeiro passo da instalação é descompactar o código-fonte e movê-lo para um diretório acessível pelo servidor web (ex.: `/var/www/html/jasmine`).
+Agora, o primeiro passo da instalação é [baixar][jasmine-zipball] e descompactar o código-fonte e movê-lo para um diretório acessível pelo servidor web (ex.: `/var/www/html/jasmine`).
 
 Em seguida, deve-se instalar as dependências (bibliotecas PHP) pelo Composer utilizando os seguintes comandos:
 
@@ -86,7 +86,17 @@ Criar as tabelas no banco de dados utilizando o comando `cake migrations`:
 
     $ bin/cake migrations migrate
 
-Após esses passos, o JASMINE deve estar instalado e acessível pelo endereço http://localhost/jasmine. O último passo necessário é a configuração da cron para atualizar os dados dos dispostivos automaticamente. Isso é feito chamando o comando `bin/cake query`. A configuração da cron para chamar esse comando a cada 5 minutos, por exemplo, ficaria assim:
+Após esses passos, o JASMINE deve estar instalado e acessível pelo endereço http://localhost/jasmine. Caso algo não funcione (ao acessar a página seja exibida uma tela em branco, por exemplo), pode ser problema de permissões. O servidor web precisa ter permissões de escrita nas pastas `tmp` e `logs` dentro do diretório do código-fonte. O comando *php composer.phar install* deveria ter definidos as permissões para esses diretórios, mas caso seja necessário fazê-lo manualmente:
+
+    $ cd /var/www/html/jasmine
+    $ sudo chown www-data:www-data -R logs tmp
+    $ sudo chmod ug+rw
+
+Ainda, se for utilizado um sistema operacional com SELinux (ex.: Fedora), esse também pode estar causando o problema. Uma solução rápida (mas **não recomendada** em ambientes reais -- pesquise no Google para saber como configurar corretamente) para poder testar o JASMINE é:
+
+    $ sudo setenforce 0
+
+O último passo necessário é a configuração da cron para atualizar os dados dos dispostivos automaticamente. Isso é feito chamando o comando `bin/cake query`. A configuração da cron para chamar esse comando a cada 5 minutos, por exemplo, ficaria assim:
 
     */5 * * * * www-data /var/www/html/jasmine/bin/cake query
 
@@ -109,3 +119,4 @@ Para mais detalhes, consultar o projeto [jasmine-docker][].
 [bootstrap-multiselect]: https://github.com/davidstutz/bootstrap-multiselect "Bootstrap Multiselect"
 [CakePHP 3, Bootstrap Helpers]: https://holt59.github.io/cakephp3-bootstrap-helpers/ "CakePHP 3.x helpers for the Bootstrap 3"
 [jasmine-docker]: https://github.com/eduardoweiland/jasmine-docker "JASMINE Docker Container"
+[jasmine-zipball]: https://github.com/eduardoweiland/jasmine/archive/master.zip
