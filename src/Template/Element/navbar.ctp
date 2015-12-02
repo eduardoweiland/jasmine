@@ -26,6 +26,6 @@ echo $this->Navbar->create(
 
     echo $this->Navbar->endMenu();
 
-    echo $this->Navbar->text('Trabalho de Administração e Gerência de Redes - UNISC 2015 - Eduardo Weiland', ['class' => 'navbar-right']);
+    echo $this->Navbar->text('Trabalho de Gerência e Administração de Redes - UNISC 2015 - Eduardo Weiland', ['class' => 'navbar-right']);
 
 echo $this->Navbar->end();
