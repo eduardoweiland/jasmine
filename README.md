@@ -29,15 +29,7 @@ A interface _web_ é desenvolvida utilizando os seguintes componentes e bibliote
 
 ## Instalação
 
-O JASMINE pode ser instalado e executado de duas formas: utilizando um container Docker ou instalando manualmente.
-
-### Docker
-
-A instalação pelo Docker é a mais simples, necessita de apenas um comando:
-
-    $ docker run --name jasmine -d -p 80:80 -p 161:161 eduardoweiland/jasmine-docker
-
-Para mais detalhes, consultar o projeto [jasmine-docker][].
+O JASMINE pode ser instalado e executado de duas formas: manualmente ou utilizando um container Docker.
 
 ### Manualmente
 
@@ -97,6 +89,16 @@ Criar as tabelas no banco de dados utilizando o comando `cake migrations`:
 Após esses passos, o JASMINE deve estar instalado e acessível pelo endereço http://localhost/jasmine. O último passo necessário é a configuração da cron para atualizar os dados dos dispostivos automaticamente. Isso é feito chamando o comando `bin/cake query`. A configuração da cron para chamar esse comando a cada 5 minutos, por exemplo, ficaria assim:
 
     */5 * * * * www-data /var/www/html/jasmine/bin/cake query
+
+### Docker
+
+A instalação pelo Docker não foi totalmente testada, então podem ser encontrados alguns problemas no ambiente. O JASMINE, no entanto, está funcionando corretamente com este container, desde que haja um ambiente devidamente configurado para realizar os testes.
+
+    $ docker run --name jasmine -d -p 80:80 -p 161:161 eduardoweiland/jasmine-docker
+
+Para mais detalhes, consultar o projeto [jasmine-docker][].
+
+
 
 [CakePHP]: http://cakephp.org "The rapid development PHP framework"
 [PHP-SNMP]: http://php.net/manual/en/book.snmp.php "PHP SNMP Documentation"
